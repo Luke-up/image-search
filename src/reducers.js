@@ -1,19 +1,22 @@
-import {SET_IMAGES, SET_LOADING} from "./actions";
+import { SET_IMAGE, SET_LOADING, SET_MODAL } from "./actions";
 
 const initialState = {
-    images: [],
+    image: [],
     isLoading: false,
+    modalOpen: false,
 };
 
-const imageReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_IMAGES:
-            return {...state, images: action.payload, isLoading: false};
+        case SET_IMAGE:
+            return { ...state, image: action.payload, isLoading: false };
         case SET_LOADING:
-            return {...state, isLoading: action.payload};
+            return { ...state, isLoading: action.payload };
+        case SET_MODAL:
+            return { ...state, modalOpen: action.payload };
         default:
             return state;
     }
 };
 
-export default imageReducer;
+export default reducer;

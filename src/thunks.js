@@ -1,8 +1,13 @@
-import { setImages, setLoading } from "./actions";
-import { fetchImages } from "./api";
+import { setImage, setModal } from './actions';
 
-export const loadImages = (query) => async (dispatch) => {
-    dispatch(setLoading(true));
-    const images = await fetchImages(query);
-    dispatch(setImages(images));
+export const toggleModal = (isOpen) => {
+    return (dispatch) => {
+        dispatch(setModal(isOpen));
+    };
+};
+
+export const saveImage = (image) => {
+    return (dispatch) => {
+        dispatch(setImage(image));
+    };
 };
