@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import ImageSelector from './ImageSelector';
 import ProfilePicture from './ProfilePicture';
 import { toggleModal } from './thunks';
+import './App.scss';
+import { Button } from '@mui/material';
 
 function App() {
   const openModal = useSelector((state) => state.modalOpen);
@@ -13,11 +15,10 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="selector-container">
       <h1>Image Gallery</h1>
       <ProfilePicture />
-      { openModal ? <ImageSelector /> : <button onClick={updatePicture}>Update Picture</button> }
-      
+      { openModal ? <ImageSelector /> : <div className="details"><p>Select a new profile picture using Pexels images search by pressing the update button!</p> <Button onClick={updatePicture} variant="contained">Update Picture</Button></div> }
     </div>
   );
 }

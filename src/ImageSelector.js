@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Grid, CircularProgress, Card, CardMedia, CardContent, Typography } from '@mui/material';
+import { Container, Grid, CircularProgress, Card, CardMedia, CardContent, Typography, Button } from '@mui/material';
 import { fetchImages } from './api';
 import { toggleModal, saveImage } from './thunks';
 import { useDispatch } from 'react-redux';
@@ -44,33 +44,31 @@ const ImageSelector = () => {
   return (
     <Container className="imageSearchModal">
       <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
-      <button onClick={() => findImage(query)}>Search</button>
-      <button onClick={() => closeModal()}>Close</button>
-      <Grid container spacing={3}>
+      <div className="button-container">
+        <Button variant="contained" onClick={() => findImage(query)}>Search</Button>
+        <Button variant="contained" onClick={() => closeModal()}>Close</Button>
+      </div>
+      <div className="image-container">
       {loading ? (
           <CircularProgress />
         ) : (
           images.map((image) => (
-            <Grid item xs={12} sm={6} md={4} key={image.id} onClick={() => {
+            <div className="image-options" key={image.id} >
+              <div className="image-card" onClick={() => {
               saveProfilePicture(image);
             }}>
-              <Card>
-                <CardMedia
-                  component="img"
-                  height="250"
-                  image={image.src.medium}
+                <img
+                  src={image.src.medium}
                   alt={image.photographer}
                 />
-                <CardContent>
-                  <Typography variant="body2" color="text.primary">
+                  <p variant="body2" color="text.primary">
                     {image.photographer}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+                  </p>
+              </div>
+            </div>
           ))
         )}
-      </Grid>
+      </div>
     </Container>
   );
 };

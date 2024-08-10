@@ -5,11 +5,11 @@ const ProfilePicture = () => {
     console.log('Profile Picture:', profilePicture);
     if (profilePicture.length === 0) {
         return (
-            <div className="imagePlaceholder"></div>
+            <div className="image-placeholder"></div>
         )
     } else {
         return (
-            <img src={profilePicture.src.medium} alt="Profile" />
+            <img className="image" src={profilePicture.src.medium} alt="Profile" />
         );
     };
 };
