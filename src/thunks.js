@@ -1,13 +1,10 @@
 import { setImage, setModal } from './actions';
 
-export const toggleModal = (isOpen) => {
-    return (dispatch) => {
-        dispatch(setModal(isOpen));
-    };
+// Thin thunk wrappers keep component code consistent with async flows.
+export const toggleModal = (isOpen) => (dispatch) => {
+  dispatch(setModal(isOpen));
 };
 
-export const saveImage = (image) => {
-    return (dispatch) => {
-        dispatch(setImage(image));
-    };
+export const saveImage = (image) => (dispatch) => {
+  dispatch(setImage(image));
 };

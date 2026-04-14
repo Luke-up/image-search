@@ -18,7 +18,18 @@ function App() {
     <div className="selector-container">
       <h1>Image Gallery</h1>
       <ProfilePicture />
-      { openModal ? <ImageSelector /> : <div className="details"><p>Select a new profile picture using Pexels images search by pressing the update button!</p> <Button onClick={updatePicture} variant="contained">Update Picture</Button></div> }
+      {openModal ? (
+        <ImageSelector />
+      ) : (
+        <div className="details">
+          <p>
+            Select a new profile picture using Pexels images search by pressing the update button!
+          </p>
+          <Button onClick={updatePicture} variant="contained">
+            Update Picture
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
